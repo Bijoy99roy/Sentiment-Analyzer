@@ -1,12 +1,16 @@
 import re
+import os
 import spacy
 from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation
+from sklearn.feature_extraction.text import TfidfVectorizer
+from utils.all_utils import read_yaml, load_file
 
 
 class PreProcessing:
     def __init__(self):
         self.nlp = spacy.load('en_core_web_sm')
+        self.config_path = 'config/config.yaml'
 
     def get_tokens(self, tweets):
         try:
@@ -45,3 +49,14 @@ class PreProcessing:
         except Exception as e:
             print(str(e))
 
+    def vectorize_data(self, data):
+        try:
+            config = read_yaml(self.config_path)
+            artifact_dir = config['ARTIFACTS']['ARTIFACTS_DIR']
+            vectorizer_file = config['ARTIFACTS']['VECTORIZER']
+            vectorizer_path = os.path.join(artifact_dir, vectorizer_file)
+            vectorizer = load_file(vectorizer_path)
+            transformed_data = vectorizer.transform(data)
+            return transformed_data
+        except Exception as e:
+            print(str(e))
