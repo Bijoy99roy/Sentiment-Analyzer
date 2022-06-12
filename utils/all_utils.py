@@ -1,5 +1,7 @@
 import yaml
 import pickle
+from flask import render_template
+
 
 def read_yaml(path_to_yaml):
     try:
@@ -7,7 +9,8 @@ def read_yaml(path_to_yaml):
             content = yaml.safe_load(yaml_file)
         return content
     except Exception as e:
-        print(str(e))
+        message = 'Error :: ' + str(e)
+        return render_template('exception.html', exception=message)
 
 
 def load_file(file_path):
@@ -15,6 +18,8 @@ def load_file(file_path):
         with open(file_path, 'rb') as f:
             return pickle.load(f)
     except FileNotFoundError as fnf:
-        print(str(fnf))
+        message = 'Error :: ' + str(fnf)
+        return render_template('exception.html', exception=message)
     except Exception as e:
-        print(str(e))
+        message = 'Error :: ' + str(e)
+        return render_template('exception.html', exception=message)

@@ -5,6 +5,7 @@ from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation
 from sklearn.feature_extraction.text import TfidfVectorizer
 from utils.all_utils import read_yaml, load_file
+from flask import render_template
 
 
 class PreProcessing:
@@ -24,13 +25,16 @@ class PreProcessing:
                     generated_tokens.append(tokens)
             return generated_tokens
         except ValueError as ve:
-            print(str(ve))
+            message = 'Error :: ' + str(ve)
+            return render_template('exception.html', exception=message)
         except Exception as e:
-            print(str(e))
+            message = 'Error :: ' + str(e)
+            return render_template('exception.html', exception=message)
 
-    def remove_noises(self, tweet_tokens, stop_words=()):
+    def remove_noises(self, tweet_tokens, stop_words=STOP_WORDS):
         try:
             cleaned_tokens = []
+            tweet_tokens = self.nlp(tweet_tokens)
             for token in tweet_tokens:
                 if token.pos_ in ['PROUN', 'ADJ', 'NOUN', 'VERB']:
                     token = token.lemma_
@@ -41,13 +45,15 @@ class PreProcessing:
                         cleaned_tokens.append(token.lower())
             return cleaned_tokens
         except Exception as e:
-            print(str(e))
+            message = 'Error :: ' + str(e)
+            return render_template('exception.html', exception=message)
 
     def join_texts(self, tokens):
         try:
-            return " ".join(tokens)
+            return [" ".join(tokens)]
         except Exception as e:
-            print(str(e))
+            message = 'Error :: ' + str(e)
+            return render_template('exception.html', exception=message)
 
     def vectorize_data(self, data):
         try:
@@ -59,4 +65,5 @@ class PreProcessing:
             transformed_data = vectorizer.transform(data)
             return transformed_data
         except Exception as e:
-            print(str(e))
+            message = 'Error :: ' + str(e)
+            return render_template('exception.html', exception=message)

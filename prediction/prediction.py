@@ -1,9 +1,10 @@
 import os
 from utils.all_utils import read_yaml, load_file
+from flask import render_template
 
 class Predictor:
     def __init__(self):
-        pass
+        self.config_path = 'config/config.yaml'
 
     def predict(self, data):
         try:
@@ -15,6 +16,8 @@ class Predictor:
             predicted_result = model.predict(data)
             return predicted_result
         except FileNotFoundError as fnf:
-            print(str(fnf))
+            message = 'Error :: ' + str(fnf)
+            return render_template('exception.html', exception=message)
         except Exception as e:
-            print(str(e))
+            message = 'Error :: ' + str(e)
+            return render_template('exception.html', exception=message)
