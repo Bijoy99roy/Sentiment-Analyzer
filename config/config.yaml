@@ -1,4 +1,4 @@
 ARTIFACTS:
   ARTIFACTS_DIR: artifacts
-  VECTORIZER: tfidf_vectorizer.pkl
-  TRAINED_MODEL:  logistic_regressor.pkl
+  VECTORIZER: TfidfVectorizer.pkl
+  TRAINED_MODEL:  LogisticRegression.pkl
