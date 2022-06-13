@@ -13,25 +13,13 @@ class PreProcessing:
         self.nlp = spacy.load('en_core_web_sm')
         self.config_path = 'config/config.yaml'
 
-    def get_tokens(self, tweets):
-        try:
-            generated_tokens = []
-            for tweet in tweets:
-                doc = self.nlp(tweet)
-                for sent in doc.sents:
-                    tokens = []
-                    for token in sent:
-                        tokens.append(token)
-                    generated_tokens.append(tokens)
-            return generated_tokens
-        except ValueError as ve:
-            message = 'Error :: ' + str(ve)
-            return render_template('exception.html', exception=message)
-        except Exception as e:
-            message = 'Error :: ' + str(e)
-            return render_template('exception.html', exception=message)
-
     def remove_noises(self, tweet_tokens, stop_words=STOP_WORDS):
+        """
+        This method removes noises from the text
+        :param tweet_tokens: word token created by spacy
+        :param stop_words: Mostly occuring words that are not required for training
+        :return: cleaned_token: Preprocessed tokens
+        """
         try:
             cleaned_tokens = []
             tweet_tokens = self.nlp(tweet_tokens)
@@ -49,6 +37,11 @@ class PreProcessing:
             return render_template('exception.html', exception=message)
 
     def join_texts(self, tokens):
+        """
+        This method joins the tokens into a single sentence
+        :param tokens: list of tokens
+        :return:
+        """
         try:
             return [" ".join(tokens)]
         except Exception as e:
@@ -56,6 +49,11 @@ class PreProcessing:
             return render_template('exception.html', exception=message)
 
     def vectorize_data(self, data):
+        """
+        This method vectorizes the sentences
+        :param data: 2d matrix of sentences
+        :return: 2d vector matrix
+        """
         try:
             config = read_yaml(self.config_path)
             artifact_dir = config['ARTIFACTS']['ARTIFACTS_DIR']
