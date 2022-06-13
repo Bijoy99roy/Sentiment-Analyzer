@@ -7,6 +7,11 @@ class Predictor:
         self.config_path = 'config/config.yaml'
 
     def predict(self, data):
+        """
+        This method predicts if a sentence if Negative or Positive
+        :param data: 2d matrix
+        :return: 1d result array
+        """
         try:
             config = read_yaml(self.config_path)
             artifact_dir = config['ARTIFACTS']['ARTIFACTS_DIR']
