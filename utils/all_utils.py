@@ -4,6 +4,11 @@ from flask import render_template
 
 
 def read_yaml(path_to_yaml):
+    """
+    This method helps in reading an yaml file
+    :param path_to_yaml: path of yaml file to be read
+    :return: yaml content dictionary
+    """
     try:
         with open(path_to_yaml) as yaml_file:
             content = yaml.safe_load(yaml_file)
@@ -14,6 +19,11 @@ def read_yaml(path_to_yaml):
 
 
 def load_file(file_path):
+    """
+    This method helps in loading the serialized files
+    :param file_path: path to the serialized files
+    :return: Deserialized file object
+    """
     try:
         with open(file_path, 'rb') as f:
             return pickle.load(f)
