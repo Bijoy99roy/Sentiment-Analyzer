@@ -30,3 +30,9 @@ footer{
   color: green;
   font-weight: bold;
 }
+
+.feedback{
+    margin-top: 30px;
+    text-align: center;
+    font-weight: bold;
+}
