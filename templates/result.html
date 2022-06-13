@@ -15,5 +15,15 @@
 
       </div>
   </div>
+    <div class="feedback">
+        Is the prediction correct?
+        <form action="/feedback" method="post">
+      <input class="form-check-input" type="radio" id="Yes" name="feedback" value="Yes">
+            <label for="Yes">Yes</label><br>
+      <input class="form-check-input" type="radio" id="No" name="feedback" value="No">
+            <label for="No">No</label><br>
+      <input class="btn btn-primary button" type="submit" value="Submit Feedback" style="height: 50px;margin-top: 22px;">
+    </form>
+    </div>
 </div>
 {% endblock %}
