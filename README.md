@@ -1,5 +1,7 @@
 # Sentiment Analyzer
 
+### UseCase:
+
 In modern times customer reviews are not only constrained to the platform it sold on. It goes beyond it, to the social media
 specifically `Twitter`.How do customers feel about your products or services? That’s important question business owners shouldn’t neglect. Positive and negative words matter. 
 They can boost your business efforts or initiate a crisis.
