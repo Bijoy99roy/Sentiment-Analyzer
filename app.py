@@ -15,13 +15,6 @@ tweet_value = None
 @cross_origin()
 def home():
     try:
-        db_operator.connect_db()
-        if db_operator.is_connected():
-            db_operator.create_tables()
-        else:
-            db_operator.connect_db()
-            db_operator.create_tables()
-
         return render_template('index.html')
     except Exception as e:
         message = 'Error :: ' + str(e)
@@ -71,7 +64,16 @@ def save_feedbacks():
             sentiment = 'Negative'
         else:
             sentiment = 'Positive'
-        db_operator.insert_data('dataset', date, current_time, tweet_value, sentiment)
+
+        db_operator.connect_db()
+        if db_operator.is_connected():
+            db_operator.create_tables()
+            db_operator.insert_data('dataset', date, current_time, tweet_value, sentiment)
+        else:
+            db_operator.connect_db()
+            db_operator.create_tables()
+            db_operator.insert_data('dataset', date, current_time, tweet_value, sentiment)
+
         return redirect(url_for('home'))
     except Exception as e:
         message = 'Error :: ' + str(e)
