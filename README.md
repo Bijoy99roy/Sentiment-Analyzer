@@ -64,3 +64,12 @@ i went with a `Logistic Regression` model.
 
 I took around 10 positive and negative records tweets from different topic and 
 the model performed quite well with a single miss classification in both catagory.
+
+### What is the feedback option for?
+
+I have saving the tweets with your feedback. So, hopefully if this feedback loops doesn't malfunction and i manage to gather enough data i'll upload the dataset to kaggle for public use.
+
+
+# N.B
+
+If you find any bugs, that i'm sure you'll please create an issue [here](https://github.com/Bijoy99roy/Sentiment-Analyzer/issues)
