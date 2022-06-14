@@ -3,6 +3,7 @@ from preprocessing.data_preprocessing import PreProcessing
 from prediction.prediction import Predictor
 from database.database import DataBase
 from datetime import datetime
+from flask_cors import cross_origin
 
 app = Flask(__name__)
 db_operator = DataBase()
@@ -11,6 +12,7 @@ tweet_value = None
 
 
 @app.route('/', methods=['GET'])
+@cross_origin()
 def home():
     try:
         if db_operator.is_connected():
@@ -26,6 +28,7 @@ def home():
 
 
 @app.route('/predict', methods=['POST'])
+@cross_origin()
 def predict():
     try:
         global tweet_value, prediction_result
@@ -50,6 +53,7 @@ def predict():
 
 
 @app.route('/feedback', methods=['POST'])
+@cross_origin()
 def save_feedbacks():
     try:
 
