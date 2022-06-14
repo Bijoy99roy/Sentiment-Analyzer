@@ -2,3 +2,8 @@ ARTIFACTS:
   ARTIFACTS_DIR: artifacts
   VECTORIZER: TfidfVectorizer.pkl
   TRAINED_MODEL:  LogisticRegression.pkl
+
+DATABASE:
+  CASSANDRA_FILE_PATH: config/secure-connect-sentiment-analyzer.zip
+  CLIENTID: uPGxgaNqPbyGmmOiKdpIcPSz
+  CLIENTSECRET: 9PjGBweratGWrhiijQmqOF58s703GXglTFOBYzR,aJT_v++oQxOko4qZ2hWHOrQ3OaM_JCblZQd1ehZzacCFnRXS7Zs8t2OCbqxgJE4Px5m3JKOzrYZKt3yISU+0j5HH
