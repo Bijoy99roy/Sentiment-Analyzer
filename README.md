@@ -44,7 +44,7 @@ pip install -r requirements.txt
 
 **Server:** Python, Flask 
 
-# FAQs
+# 📑 FAQs
 
 ### What is the source of the data?
 
@@ -70,6 +70,6 @@ the model performed quite well with a single miss classification in both catagor
 I have saving the tweets with your feedback. So, hopefully if this feedback loops doesn't malfunction and i manage to gather enough data i'll upload the dataset to kaggle for public use.
 
 
-# N.B
+# 👾 Bug Report
 
 If you find any bugs, that i'm sure you'll please create an issue [here](https://github.com/Bijoy99roy/Sentiment-Analyzer/issues)
