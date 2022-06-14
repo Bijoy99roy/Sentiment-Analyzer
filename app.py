@@ -15,6 +15,7 @@ tweet_value = None
 @cross_origin()
 def home():
     try:
+        db_operator.connect_db()
         if db_operator.is_connected():
             db_operator.create_tables()
         else:
